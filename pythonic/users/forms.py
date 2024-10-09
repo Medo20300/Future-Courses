@@ -26,7 +26,7 @@ class RegistrationForm(FlaskForm):
         validators=[
             DataRequired(),
             Regexp(
-                "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,32}$"
+                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,32}$"
             ),
         ],
     )
@@ -97,7 +97,7 @@ class ResetPasswordForm(FlaskForm):
         validators=[
             DataRequired(),
             Regexp(
-                "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,32}$"
+                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,32}$"
             ),
         ],
     )
