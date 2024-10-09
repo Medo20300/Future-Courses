@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <!-- Favicon links -->
+        <link rel="apple-touch-icon" sizes="144x144" href="/static/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+        <link rel="manifest" href="/static/site.webmanifest">
+        <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if title %}
+    <title>Future-Courses - {{title}}</title>
+    {% else %}
+    <title>Future-Courses 🌟</title>
+    {%endif%}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    {{ modals() }}
+    {{ ckeditor.load_code_theme() }}
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <a href="{{url_for('main.home')}}" class="navbar-brand"><b>E-Learn 🌟</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{{url_for('main.about')}}" class="nav-link"><b>About</b></a>
+                    </li>
+                    <li class="nav-item">
+                        {% if request.path=='/home'%}
+                        <a href="#learn" class="nav-link"><b>Start Learning</b></a>
+                        {% else %}
+                        <a href="{{url_for('courses.courses')}}" class="nav-link"><b>Start Learning</b></a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <!-- User Links -->
+                <ul class="navbar-nav ms-auto">
+                    {% if current_user.is_authenticated %}
+                    <div class="dropdown show">
+                        <button class="btn btn-dark bg-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                           My Account  
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li class="nav-item">
+                                <a href="{{ url_for('users.dashboard') }}" class="dropdown-item"><b>Dashboard</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url_for('users.logout') }}" class="dropdown-item"><b>Logout</b></a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('users.register') }}" class="nav-link"><b>Register</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('users.login') }}" class="nav-link"><b>Login</b></a>
+                    </li>
+                    {% endif%}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}} text-center">
+        {{message}}
+    </div>
+    {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+    {% block content%} {% endblock %}
+    <!-- footer -->
+
+    <footer class="bg-dark mt-auto">
+        <div class="container p-2">
+            <div class="row text-center text-white">
+                <div class="col-md-12 col-lg-4 pb-2">
+                    <h4 class="text-center text-decoration-underline">Quick Links</h4>
+                    <ul class=" nobull pt-3">
+                        <li><a href="#" class="link text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="link text-white">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <h4 class="text-center text-decoration-underline pb-3">Social Links</h4>
+                    <a href="https://github.com/Medo20300" class="text-white p-2" target="_blank"><i class="bi-github"></i></a>
+                    <a href="https://www.youtube.com/@ALXAfrica" class="text-white p-2" target="_blank"><i class="bi-youtube"></i></a>
+                    <a href="https://www.facebook.com/alxafrica" class="text-white p-2" target="_blank"><i class="bi-facebook"></i></a>
+                    <a href="https://x.com/alx_africa?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="text-white p-2" target="_blank"><i class="bi-twitter"></i></a>
+                    <a href="https://www.instagram.com/alx_africa/?hl=ar" class="text-white p-2" target="_blank"><i class="bi-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@alx_africa" class="text-white p-2" target="_blank"><i class="bi-tiktok"></i></a>
+
+                </div>
+                <div class="col-md-12 col-lg-4 pb-2">
+                    <h4 class="text-center text-decoration-underline pb-3">Contact Us</h4>
+                    <p class="lead"><b>ElearnApp.project@gmail.com</b></p>
+                    <p class="lead"><b>ElearnApp.project@gmail.com</b></p>
+                    <p class="lead"><b>Tel:-</b>002-01014253299</p>
+                    <p class="lead"><b>WatsApp</b>01014253299</p>
+                </div>
+            </div>
+            <footer class="bg-dark text-white mt-auto">
+                <div class="container text-center py-4">
+                    <h4 class="text-decoration-underline">Subscribe to our Newsletter</h4>
+                    <form action="/subscribe" method="POST" class="d-flex justify-content-center pt-2">
+                        <input type="email" name="email" placeholder="Enter your email" class="form-control w-50" required>
+                        <button type="submit" class="btn btn-primary ms-2">Subscribe</button>
+                    </form>
+                </div>
+                <div class="container text-center py-2">
+                    <p>&copy; 2024 Future-Courses</p>
+                </div>
+            </footer>
+        
+            <div class="col text-white text-center position-relative">
+                <p class="lead font-weight-bold">Copyright &copy; 2024 | ElearnApp</p>
+                <a href="#" class="position-absolute bottom-0 end-0">
+                    <i class="bi bi-arrow-up-circle h1"></i>
+                </a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
