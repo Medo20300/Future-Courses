@@ -30,7 +30,7 @@ class RegistrationForm(FlaskForm):
         validators=[
             DataRequired(),
             Regexp(
-                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,32}$"
+                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#])[A-Za-z\d@$!%*?&_]{8,32}$"
             ),
         ],
     )
@@ -65,6 +65,10 @@ class LoginForm(FlaskForm):
 
 
 class UpdateProfileForm(FlaskForm):
+    fname = StringField(
+        "First Name", validators=[DataRequired(), Length(min=2, max=25)]
+    )
+    lname = StringField("Last Name", validators=[DataRequired(), Length(min=2, max=25)])
     username = StringField(
         "Username", validators=[DataRequired(), Length(min=2, max=25)]
     )
@@ -101,7 +105,7 @@ class ResetPasswordForm(FlaskForm):
         validators=[
             DataRequired(),
             Regexp(
-                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,32}$"
+                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#])[A-Za-z\d@$!%*?&_]{8,32}$"
             ),
         ],
     )

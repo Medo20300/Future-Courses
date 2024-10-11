@@ -9,13 +9,17 @@
                     data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab"
                     aria-controls="nav-profile" aria-selected="true">Profile</button>
             </a>
+            
 
-            <a class="link" href="/dashboard/new_lesson">
-                <button class="{{'nav-link active' if active_tab=='new_lesson' else 'nav-link'}}" id="nav-newLesson-tab"
-                    data-bs-toggle="tab" data-bs-target="#nav-newLesson" type="button" role="tab"
-                    aria-controls="nav-newLesson" aria-selected="true">New Lesson</button>
-            </a>
+            {% if user_permission == 'mentor' %}
+                <a class="link" href="/dashboard/new_lesson">
+                    <button class="{{'nav-link active' if active_tab=='new_lesson' else 'nav-link'}}" id="nav-newLesson-tab"
+                        data-bs-toggle="tab" data-bs-target="#nav-newLesson" type="button" role="tab"
+                        aria-controls="nav-newLesson" aria-selected="true">New Lesson</button>
+                </a>
+            {% endif %}
 
+            
             <a class="link" href="/dashboard/user_lessons">
                 <button class="{{'nav-link active' if active_tab=='user_lessons' else 'nav-link'}}"
                     id="nav-user_lessons-tab" data-bs-toggle="tab" data-bs-target="#nav-Lessons" type="button"

@@ -75,6 +75,8 @@ def new_lesson():
         session["flag"] = True
         flash("New Course has been created!", "success")
         return redirect(url_for("users.dashboard"))
+    
+    user_permission = current_user.permission  # 'student' or 'mentor'
 
     modal = None if flag else "newCourse"
     return render_template_modal(
@@ -84,6 +86,7 @@ def new_lesson():
         new_course_form=new_course_form,
         active_tab="new_lesson",
         modal=modal,
+        user_permission=user_permission
     )
 
 
@@ -106,8 +109,11 @@ def lesson(lesson_slug, course):
 @lessons.route("/dashboard/user_lessons", methods=["GET", "POST"])
 @login_required
 def user_lessons():
+    user_permission = current_user.permission  # 'student' or 'mentor'
+
     return render_template(
-        "user_lessons.html", title="Your Lessons", active_tab="user_lessons"
+        "user_lessons.html", title="Your Lessons", active_tab="user_lessons",user_permission=user_permission
+
     )
 
 

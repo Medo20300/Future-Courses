@@ -78,7 +78,11 @@ def logout():
 @users.route("/dashboard", methods=["GET"])
 @login_required
 def dashboard():
-    return render_template("dashboard.html", title="Dashboard", active_tab=None)
+    # Get the user permission from the current logged-in user
+    user_permission = current_user.permission  # 'student' or 'mentor'
+
+    # Render the appropriate template and pass the user_permission
+    return render_template('dashboard.html', title="Dashboard", user_permission=user_permission, active_tab=None)
 
 
 @users.route("/dashboard/profile", methods=["GET", "POST"])
@@ -91,23 +95,32 @@ def profile():
                 profile_form.picture.data, "static/user_pics", output_size=(150, 150)  
             )
             current_user.image_file = picture_file
+        profile_form.fname.data = current_user.fname
+        profile_form.lname.data = current_user.lname
         current_user.username = profile_form.username.data
         current_user.email = profile_form.email.data
         current_user.bio = profile_form.bio.data
         db.session.commit()
         flash("Your profile has been updated", "success")
         return redirect(url_for("users.profile"))
+
     elif request.method == "GET":
+        profile_form.fname.data = current_user.fname
+        profile_form.lname.data = current_user.lname
         profile_form.username.data = current_user.username
         profile_form.email.data = current_user.email
         profile_form.bio.data = current_user.bio
+
     image_file = url_for("static", filename=f"user_pics/{current_user.image_file}")
+    user_permission = current_user.permission  # 'student' or 'mentor'
+
     return render_template(
         "profile.html",
         title="Profile",
         profile_form=profile_form,
         image_file=image_file,
         active_tab="profile",
+        user_permission=user_permission
     )
 
 
