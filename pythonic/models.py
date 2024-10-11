@@ -73,4 +73,3 @@ class Subscriber(db.Model):
 
     def __repr__(self):
         return f"Subscriber('{self.email}')"
-
