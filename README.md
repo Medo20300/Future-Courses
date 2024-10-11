@@ -30,7 +30,7 @@
 * static/: Stores static files like images, icons, and the CKEditor plugin.
 * models.py: Defines the database models for user and course management.
 * config.py: Contains the configuration settings for the Flask application, such as database connections.
-
+-----------------------------------------------------------------------------------------------------------
 # Installation
 
 1. Clone the repository:
@@ -54,7 +54,7 @@
 5. Run the application:
 
 * flask run
-
+------------------------------------------------------------------------------------------------------
 # Technologies Used
 
 * Backend: Flask (Python)
@@ -62,6 +62,8 @@
 * Frontend: HTML, CSS, JavaScript
 * Text Editor: CKEditor
 * Version Control: Git, GitHub
+![FlaskFramework](https://github.com/user-attachments/assets/749d7224-2e3b-4078-9b60-9421bebebae1)
+-------------------------------------------------------------------------------------------------------
 
 # Future Enhancements
 
@@ -69,9 +71,8 @@
 2. Adding API endpoints to allow interaction with mobile apps or external services.
 3. Enhancing course content with multimedia support.
 
-# Technologies Used
-![FlaskFramework](https://github.com/user-attachments/assets/749d7224-2e3b-4078-9b60-9421bebebae1)
 
+--------------------------------------------------------------------------------------------------------
 
 # Authors
 
