@@ -35,16 +35,22 @@
 
 1. Clone the repository:
 
-* git clone https://github.com/Medo20300/Future-Courses.git
+```python
+git clone https://github.com/Medo20300/Future-Courses.git
+```
 
 2. Create and activate a virtual environment:
 
-* python3 -m venv venv
-* source venv/bin/activate
+```python
+python3 -m venv venv
+source venv/bin/activate
+```
 
 3. Install the required dependencies:
 
-* pip install -r requirements.txt
+```python
+pip install -r requirements.txt
+```
 
 4. Configure the database:
 
@@ -53,7 +59,14 @@
 
 5. Run the application:
 
-* flask run
+```python
+python3 create_app.py
+```
+
+```python
+python3 run.py
+```
+
 ------------------------------------------------------------------------------------------------------
 # Technologies Used
 
@@ -82,5 +95,5 @@
 
 2. **Bishoy Hany Halim**
    - Role: Back and Front End
-   - Email: [bishoyhany31@gmail.com](mailto:bishoyhany31@gmail.com)
+   - LinkedIn Account: [LinkedIn](https://www.linkedin.com/in/bishoy-hany-halim/)
 
