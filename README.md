@@ -75,7 +75,17 @@
 2. Adding API endpoints to allow interaction with mobile apps or external services.
 3. Enhancing course content with multimedia support.
 
-# Author
-1. Medhat Mohamed Deif - [medhatconcrete@gmail.com](mailto:medhatconcrete@gmail.com)
-2. Bishoy Hany Halim - [bishoyhany31@gmail.com](mailto:bishoyhany31@gmail.com)
+# Technologies Used
+![FlaskFramework](https://github.com/user-attachments/assets/749d7224-2e3b-4078-9b60-9421bebebae1)
+
+
+# Authors
+
+1. **Medhat Mohamed Deif**
+   - Role: Back End
+   - Email: [medhatconcrete@gmail.com](mailto:medhatconcrete@gmail.com)
+
+2. **Bishoy Hany Halim**
+   - Role: Back and Front End
+   - Email: [bishoyhany31@gmail.com](mailto:bishoyhany31@gmail.com)
 
