@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from pythonic.models import User
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
 from wtforms.validators import (
     DataRequired,
     Length,
@@ -20,6 +20,10 @@ class RegistrationForm(FlaskForm):
     username = StringField(
         "Username", validators=[DataRequired(), Length(min=2, max=25)]
     )
+    permission = SelectField(
+        'Permission', choices=[('student', 'Student'), ('mentor', 'Mentor')]
+    )
+
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField(
         "Password",

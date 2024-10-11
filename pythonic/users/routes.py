@@ -41,6 +41,7 @@ def register():
             fname=form.fname.data,
             lname=form.lname.data,
             username=form.username.data,
+            permission=form.permission.data,
             email=form.email.data,
             password=hashed_password,
         )

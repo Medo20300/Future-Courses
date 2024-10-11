@@ -47,6 +47,24 @@
                 {% endif %}
 
             </div>
+
+            
+            <div class="form-group">
+                {{ form.permission.label(class='form-control-label') }}
+            
+                {% if form.permission.errors %}
+                    {{ form.permission(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.permission.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.permission(class='form-select') }}
+                {% endif %}
+            </div>
+
+
             <div class="form-group">
                 {{ form.email.label(class='form-control-label')}}
                 {% if form.email.errors%}
