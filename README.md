@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>>
-<body>
-    <h1>Future Courses</h1>
-</body>
 
-
-</html>
+#    Future Courses
 
 # Introduction
 
