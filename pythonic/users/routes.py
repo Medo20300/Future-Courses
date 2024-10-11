@@ -81,6 +81,9 @@ def dashboard():
     # Get the user permission from the current logged-in user
     user_permission = current_user.permission  # 'student' or 'mentor'
 
+    if user_permission == 'student':
+        return redirect(url_for("users.profile"))
+
     # Render the appropriate template and pass the user_permission
     return render_template('dashboard.html', title="Dashboard", user_permission=user_permission, active_tab=None)
 
@@ -95,8 +98,8 @@ def profile():
                 profile_form.picture.data, "static/user_pics", output_size=(150, 150)  
             )
             current_user.image_file = picture_file
-        profile_form.fname.data = current_user.fname
-        profile_form.lname.data = current_user.lname
+        current_user.fname = profile_form.fname.data
+        current_user.lname = profile_form.lname.data
         current_user.username = profile_form.username.data
         current_user.email = profile_form.email.data
         current_user.bio = profile_form.bio.data
