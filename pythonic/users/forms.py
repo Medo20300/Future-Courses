@@ -65,6 +65,7 @@ class LoginForm(FlaskForm):
 
 
 class UpdateProfileForm(FlaskForm):
+    fname = StringField("First Name", validators=[DataRequired()])
     username = StringField(
         "Username", validators=[DataRequired(), Length(min=2, max=25)]
     )
@@ -80,7 +81,7 @@ class UpdateProfileForm(FlaskForm):
             user = User.query.filter_by(username=username.data).first()
             if user:
                 raise ValidationError(
-                    "Username already exists! Please chosse a different one"
+                    "Username already exists! Please choose a different one"
                 )
 
     def validate_email(self, email):
@@ -88,7 +89,7 @@ class UpdateProfileForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError(
-                    "Email already exists! Please chosse a different one"
+                    "Email already exists! Please choose a different one"
                 )
 
 
