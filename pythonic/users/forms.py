@@ -65,10 +65,6 @@ class LoginForm(FlaskForm):
 
 
 class UpdateProfileForm(FlaskForm):
-    fname = StringField(
-        "First Name", validators=[DataRequired(), Length(min=2, max=25)]
-    )
-    lname = StringField("Last Name", validators=[DataRequired(), Length(min=2, max=25)])
     username = StringField(
         "Username", validators=[DataRequired(), Length(min=2, max=25)]
     )
@@ -94,6 +90,7 @@ class UpdateProfileForm(FlaskForm):
                 raise ValidationError(
                     "Email already exists! Please chosse a different one"
                 )
+
 
 class RequestResetForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
