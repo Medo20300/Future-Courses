@@ -65,11 +65,6 @@ class LoginForm(FlaskForm):
 
 
 class UpdateProfileForm(FlaskForm):
-<<<<<<< HEAD
-=======
-    fname = StringField("First Name", validators=[DataRequired()])
-    lname = StringField("Last Name", validators=[DataRequired()])  # Add lname field here
->>>>>>> origin/main
     username = StringField(
         "Username", validators=[DataRequired(), Length(min=2, max=25)]
     )
