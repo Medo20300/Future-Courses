@@ -90,10 +90,10 @@ python3 run.py
 # Authors
 
 1. **Medhat Mohamed Deif**
-   - Role: Back End
+   - Role: Full Stack
    - Email: [medhatconcrete@gmail.com](mailto:medhatconcrete@gmail.com)
 
 2. **Bishoy Hany Halim**
-   - Role: Back and Front End
+   - Role: Full Stack
    - LinkedIn Account: [LinkedIn](https://www.linkedin.com/in/bishoy-hany-halim/)
 

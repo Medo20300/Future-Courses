@@ -103,8 +103,7 @@ def profile():
                 profile_form.picture.data, "static/user_pics", output_size=(150, 150)  
             )
             current_user.image_file = picture_file
-        current_user.fname = profile_form.fname.data
-        current_user.lname = profile_form.lname.data
+ 
         current_user.username = profile_form.username.data
         current_user.email = profile_form.email.data
         current_user.bio = profile_form.bio.data
@@ -113,8 +112,7 @@ def profile():
         return redirect(url_for("users.profile"))
 
     elif request.method == "GET":
-        profile_form.fname.data = current_user.fname
-        profile_form.lname.data = current_user.lname
+
         profile_form.username.data = current_user.username
         profile_form.email.data = current_user.email
         profile_form.bio.data = current_user.bio
