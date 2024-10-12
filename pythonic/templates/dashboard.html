@@ -5,13 +5,7 @@
     <nav>
         <div class="nav nav-tabs" id="tablist">
 
-            {% if user_permission == 'student' %}
-                <a class="link" href="/dashboard/profile">
-                    <button class="{{'nav-link active' if active_tab=='profile' else 'nav-link'}}" id="nav-profile-tab"
-                        data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab"
-                        aria-controls="nav-profile" aria-selected="true">Student Profile</button>
-                </a>
-            {% endif %}
+
             
 
             {% if user_permission == 'mentor' or admin_permission %}
@@ -32,7 +26,16 @@
                         id="nav-user_lessons-tab" data-bs-toggle="tab" data-bs-target="#nav-Lessons" type="button"
                         role="tab" aria-controls="nav-Lessons" aria-selected="true">Your Lessons</button>
                 </a>
+            {% elif user_permission == 'student' %}
+
+                <a class="link" href="/dashboard/profile">
+                    <button class="{{'nav-link active' if active_tab=='profile' else 'nav-link'}}" id="nav-profile-tab"
+                        data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab"
+                        aria-controls="nav-profile" aria-selected="true">Student Profile</button>
+                </a>
+
             {% endif %}
+
 
         </div>
     </nav>
