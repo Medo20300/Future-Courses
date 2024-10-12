@@ -7,7 +7,7 @@ class Config:
     # Database configuration using MySQLAlchemy
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'SQLALCHEMY_DATABASE_URI', 
-        'mysql+pymysql://root:PASSword!!123@localhost/learning'  # Fixed the formatting here
+        'mysql+pymysql://root:hellomysql@localhost/learning'  # Fixed the formatting here
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable track modifications to save resources
 
