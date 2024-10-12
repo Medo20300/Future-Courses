@@ -13,17 +13,17 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label for="fname" class="form-label">First Name</label>
-                        <input class="form-control" type="text" value="{{ current_user.fname}}">
+                        <input class="form-control" type="text" value="{{ current_user.fname }}" readonly>
                     </div>
                     <div class="col">
                         <label for="lname" class="form-label">Last Name</label>
-                        <input class="form-control" type="text" value="{{ current_user.lname}}">
+                        <input class="form-control" type="text" value="{{ current_user.lname }}" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
                         {{ profile_form.username.label(class='form-control-label')}}
-                        {% if profile_form.username.errors%}
+                        {% if profile_form.username.errors %}
                         {{ profile_form.username(class='form-control form-control-lg is-invalid')}}
                         <div class="invalid-feedback">
                             {% for error in profile_form.username.errors %}
@@ -36,19 +36,18 @@
                     </div>
                     <div class="col">
                         {{ profile_form.email.label(class='form-control-label')}}
-                        {% if profile_form.email.errors%}
-                        {{ profile_form.email(class='form-control form-control-lg is-invalid')}}
+                        {% if profile_form.email.errors %}
+                        {{ profile_form.email(class='form-control form-control-lg is-invalid', readonly=True) }}
                         <div class="invalid-feedback">
                             {% for error in profile_form.email.errors %}
                             <span>{{error}}</span>
                             {% endfor %}
                         </div>
                         {% else %}
-                        {{ profile_form.email(class='form-control form-control', readonly=True)}}
+                        {{ profile_form.email(class='form-control form-control', readonly=True) }}
                         {% endif %}
                     </div>
                 </div>
-
             </div>
         </fieldset>
         <fieldset>
@@ -59,8 +58,8 @@
                     {{ profile_form.bio(class='form-control') }}
                 </div>
                 <div class="form-group mb-3">
-                    {{ profile_form.picture.label}}
-                    {{ profile_form.picture(class='form-control-file')}}
+                    {{ profile_form.picture.label }}
+                    {{ profile_form.picture(class='form-control-file') }}
                     {% if profile_form.picture.errors %}
                     {% for error in profile_form.picture.errors %}
                     <span class="text-danger">{{ error }}</span></br>
