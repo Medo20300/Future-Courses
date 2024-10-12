@@ -3,6 +3,7 @@ import secrets
 import os
 from pythonic.models import Lesson, Course
 from flask_ckeditor import upload_success, upload_fail
+from flask_login import current_user
 from flask import (
     render_template,
     url_for,
@@ -37,12 +38,30 @@ def upload():
 @main.route("/")
 @main.route("/home")
 def home():
-    lessons = Lesson.query.order_by(Lesson.date_posted.desc()).paginate(
-        page=1, per_page=6
-    )
+    # Initialize admin_permission as False by default
+    admin_permission = False
+
+    # Check if the user is authenticated first
+    if current_user.is_authenticated:
+        if current_user.id == 1:
+            # Render the admin page if the user is admin (id == 1)
+            return render_template("admin.html", title='Admin Page')
+        elif current_user.id > 1:
+            # Set admin_permission to True for non-admin authenticated users
+            admin_permission = True
+
+    # Fetch lessons and courses for non-admin users or unauthenticated users
+    lessons = Lesson.query.order_by(Lesson.date_posted.desc()).paginate(page=1, per_page=6)
     courses = Course.query.paginate(page=1, per_page=6)
-    return render_template("home.html", lessons=lessons, courses=courses)
+
+    return render_template("home.html", lessons=lessons, courses=courses, admin_permission=admin_permission)
+
 
 @main.route("/about")
 def about():
     return render_template("about.html", title="About")
+
+@main.route("/admin_page")
+def admin():
+
+    return render_template("admin.html", title='Admin Page')

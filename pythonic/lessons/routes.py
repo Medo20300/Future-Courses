@@ -77,6 +77,8 @@ def new_lesson():
         return redirect(url_for("users.dashboard"))
     
     user_permission = current_user.permission  # 'student' or 'mentor'
+    admin_permission = current_user.is_authenticated and current_user.id == 1
+
 
     modal = None if flag else "newCourse"
     return render_template_modal(
@@ -86,7 +88,8 @@ def new_lesson():
         new_course_form=new_course_form,
         active_tab="new_lesson",
         modal=modal,
-        user_permission=user_permission
+        user_permission=user_permission,
+        admin_permission=admin_permission,
     )
 
 
@@ -110,9 +113,13 @@ def lesson(lesson_slug, course):
 @login_required
 def user_lessons():
     user_permission = current_user.permission  # 'student' or 'mentor'
+    admin_permission = current_user.is_authenticated and current_user.id == 1
 
     return render_template(
-        "user_lessons.html", title="Your Lessons", active_tab="user_lessons",user_permission=user_permission
+        "user_lessons.html", title="Your Lessons",
+        active_tab="user_lessons",
+        user_permission=user_permission,
+        admin_permission=admin_permission,
 
     )
 

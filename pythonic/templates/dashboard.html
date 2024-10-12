@@ -14,7 +14,7 @@
             {% endif %}
             
 
-            {% if user_permission == 'mentor' %}
+            {% if user_permission == 'mentor' or admin_permission %}
                 <a class="link" href="/dashboard/profile">
                     <button class="{{'nav-link active' if active_tab=='profile' else 'nav-link'}}" id="nav-profile-tab"
                         data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab"

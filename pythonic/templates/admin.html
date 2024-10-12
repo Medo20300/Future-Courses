@@ -1,0 +1,13 @@
+{% extends "dashboard.html"%}
+{% block profile %}
+
+    <h1>hello, {{ current_user.fname }} </h1>
+    <h3>You login as an Admin</h3>
+    <br>
+    <br>
+    <a href="/admin/user/" class="btn btn-primary ms-2">Go to Admin Page</a>
+
+    <a href="/courses" class="btn btn-primary ms-2">Show all courses</a>
+
+
+{% endblock %}

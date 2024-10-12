@@ -80,12 +80,17 @@ def logout():
 def dashboard():
     # Get the user permission from the current logged-in user
     user_permission = current_user.permission  # 'student' or 'mentor'
+    admin_permission = current_user.is_authenticated and current_user.id == 1
 
     if user_permission == 'student':
         return redirect(url_for("users.profile"))
 
     # Render the appropriate template and pass the user_permission
-    return render_template('dashboard.html', title="Dashboard", user_permission=user_permission, active_tab=None)
+    return render_template('dashboard.html',
+                            title="Dashboard",
+                            user_permission=user_permission,
+                            admin_permission=admin_permission,
+                            active_tab=None)
 
 
 @users.route("/dashboard/profile", methods=["GET", "POST"])
@@ -116,6 +121,8 @@ def profile():
 
     image_file = url_for("static", filename=f"user_pics/{current_user.image_file}")
     user_permission = current_user.permission  # 'student' or 'mentor'
+    admin_permission = current_user.is_authenticated and current_user.id == 1
+
 
     return render_template(
         "profile.html",
@@ -123,7 +130,8 @@ def profile():
         profile_form=profile_form,
         image_file=image_file,
         active_tab="profile",
-        user_permission=user_permission
+        user_permission=user_permission,
+        admin_permission=admin_permission,
     )
 
 
