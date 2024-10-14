@@ -89,9 +89,14 @@ class Course(db.Model):
 
 
 class Subscriber(db.Model):
-    """Model representing a subscriber's email for updates."""
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True, nullable=False)
+        """Model representing a subscriber's email for updates."""
+            
+                # Unique identifier for each subscriber, serves as the primary key.
+                    id = db.Column(db.Integer, primary_key=True)
+                        
+                            # Subscriber's email address, must be unique and cannot be null.
+                                email = db.Column(db.String(150), unique=True, nullable=False)
 
-    def _repr_(self):
-        return f"Subscriber('{self.email}')"
+                                    def __repr__(self):
+                                                # Return a string representation of the subscriber object, showing the email.
+                                                        return f"Subscriber('{self.email}')"
