@@ -1,7 +1,7 @@
 # Import necessary modules and extensions for the Flask application
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy  # For database interaction
+
 from flask_bcrypt import Bcrypt  # For password hashing
 from flask_login import LoginManager  # For user authentication management
 from flask_migrate import Migrate  # For handling database migrations
