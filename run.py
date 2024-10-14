@@ -1,4 +1,3 @@
-
 # Import the application creation function from the main package
 from pythonic import create_app
 # Import the Flask app object
