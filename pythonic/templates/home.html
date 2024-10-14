@@ -1,78 +1,84 @@
-{% extends "layout.html"%}
-{% block content%}
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+    .welcome-message {
+        font-size: 2rem; /* زيادة حجم الخط */
+        font-weight: bold; /* جعل النص سميك */
+        color: #f39c12; /* اختيار لون جذاب */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* إضافة ظل للنص */
+        margin-bottom: 20px; /* إضافة مسافة سفلية */
+    }
+
+    .username {
+        color: #e67e22; /* لون مميز لاسم المستخدم */
+        border-bottom: 2px solid #e74c3c; /* إضافة خط تحت اسم المستخدم */
+        padding: 0 5px; /* إضافة حشوة لاسم المستخدم */
+    }
+</style>
 
 <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
     <div class="container">
-
         <div class="d-sm-flex align-items-center justify-content-between">
-
             <div>
                 {% if current_name %}
-                    <h2 class="btn-username">Welcome, {{ current_name }}</h2>
+                    <h2 class="welcome-message">Welcome, <span class="username">{{ current_name }}</span></h2>
                 {% else %}
                     <button class="btn-username">Hello, Guest</button>
                 {% endif %}
 
                 <h2 class="mb-10"> Learn <span class="text-warning"> To Code </span></h2>
                 <p class="lead my-4">
-                    <b>We focus on teaching programming </b>  in an intuitive and easy-to-follow way. <b>All you need is
-			                       dedication!</b>
+                    <b>We focus on teaching programming </b> in an intuitive and easy-to-follow way. <b>All you need is
+                    dedication!</b>
                 </p>
                 <a class="btn btn-danger btn-lg border"
                     href="https://www.youtube.com/@ALXAfrica" target="_blank">
                     <i class="bi bi-youtube m-3"></i> Subscribe
                 </a>
-
             </div>
-            <img class="img-fluid w-50 d-none d-sm-block" src="{{url_for('static', filename='Showcase.svg')}}" alt="">
+            <img class="img-fluid w-50 d-none d-sm-block" src="{{ url_for('static', filename='Showcase.svg') }}" alt="">
         </div>
     </div>
 </section>
+
 <!-- Social Media -->
 <section class="bg-primary text-light p-5">
     <div class="container">
         <div class="d-md-flex justify-content-between align-items-center">
             <h3 class="mb-3 text-center">Join Our Community</h3>
             <nav class="navbar navbar-expand-lg navbar-dark">
-                <button class="navbar-toggler border" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#socialbtn">
+                <button class="navbar-toggler border" type="button" data-bs-toggle="collapse" data-bs-target="#socialbtn">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="socialbtn">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="btn btn-dark ms-5 button_width" href="https://github.com/Medo20300"
-                                target="_blank">
+                            <a class="btn btn-dark ms-5 button_width" href="https://github.com/Medo20300" target="_blank">
                                 <i class="bi-github" role="img"></i>
                                 GitHub
                             </a>
                         </li>
                         <li>
-                            <a class="btn btn-dark ms-5 button_width" href="https://www.facebook.com/alxafrica"
-                                target="_blank">
-                                <i class="bi bi-facebook "></i>
+                            <a class="btn btn-dark ms-5 button_width" href="https://www.facebook.com/alxafrica" target="_blank">
+                                <i class="bi bi-facebook"></i>
                                 Facebook
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="btn btn-dark ms-5 button_width"
-                                href="https://www.instagram.com/alx_africa/?hl=ar" target="_blank">
+                            <a type="button" class="btn btn-dark ms-5 button_width" href="https://www.instagram.com/alx_africa/?hl=ar" target="_blank">
                                 <i class="bi bi-instagram"></i>
                                 Instagram
                             </a>
-
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-dark ms-5 button_width" href="https://x.com/alx_africa?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                                target="_blank">
+                            <a class="btn btn-dark ms-5 button_width" href="https://x.com/alx_africa?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
                                 <i class="bi bi-twitter"></i>
                                 Twitter
                             </a>
-
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-dark ms-5 button_width" href="https://www.tiktok.com/@alx_africa"
-                                target="_blank">
+                            <a class="btn btn-dark ms-5 button_width" href="https://www.tiktok.com/@alx_africa" target="_blank">
                                 <i class="bi bi-tiktok"></i>
                                 TikTok
                             </a>
@@ -81,10 +87,9 @@
                 </div>
             </nav>
         </div>
-
-    </div>
     </div>
 </section>
+
 <!-- Courses -->
 <section class="bg-ligh">
     <div class="container p-5">
@@ -92,15 +97,15 @@
         <div class="row">
             {% for course in courses.items %}
             <div class="col-sm-12 col-md-6 col-lg-4 p-3 d-flex align-items-stretch">
-                <a href="{{url_for('courses.course', course_title=course.title)}}" class="text-decoration-none">
+                <a href="{{ url_for('courses.course', course_title=course.title) }}" class="text-decoration-none">
                     <div class="card bg-dark text-light h-100">
                         <div class="card-body text-center">
-                            <img src="{{url_for('static', filename='course_icons/'+course.icon)}}" alt=""
+                            <img src="{{ url_for('static', filename='course_icons/' + course.icon) }}" alt=""
                                 class="card-img w-25">
                             <h4 class="card-title mb-3">
-                                {{course.title}}
+                                {{ course.title }}
                             </h4>
-                            <p class="card-text">{{course.description}}</p>
+                            <p class="card-text">{{ course.description }}</p>
                         </div>
                     </div>
                 </a>
@@ -109,7 +114,7 @@
         </div>
         <!-- more courses -->
         <div class="" style="display: flex; justify-content: flex-end">
-            <a href="{{ url_for('courses.courses')}}" class="btn btn-info btn-lg"> More Courses &gt&gt&gt</a>
+            <a href="{{ url_for('courses.courses') }}" class="btn btn-info btn-lg"> More Courses &gt;&gt;&gt;</a>
         </div>
     </div>
 </section>
@@ -126,30 +131,27 @@
             {% for lesson in lessons.items %}
             <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
                 <div class="card lesson">
-                    <img src="{{url_for('static', filename='lesson_thumbnails/'+lesson.thumbnail)}}" class="card-img">
+                    <img src="{{ url_for('static', filename='lesson_thumbnails/' + lesson.thumbnail) }}" class="card-img">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">
                             <a class="text-decoration-none text-dark"
-                                href="{{url_for('lessons.lesson', lesson_slug=lesson.slug, course=lesson.course_name.title)}}">{{lesson.title}}</a>
+                                href="{{ url_for('lessons.lesson', lesson_slug=lesson.slug, course=lesson.course_name.title) }}">{{ lesson.title }}</a>
                         </h5>
                         <p class="card-text mb-0">In:
                             <a class="text-decoration-none"
-                                href="{{ url_for('courses.course', course_title=lesson.course_name.title)}}">{{lesson.course_name.title}}</a>
+                                href="{{ url_for('courses.course', course_title=lesson.course_name.title) }}">{{ lesson.course_name.title }}</a>
                         </p>
                         <span><img class="article-img rounded-circle"
-                                src="{{url_for('static', filename='user_pics/'+lesson.author.image_file)}}" alt="">By:
-                            <a href="{{ url_for('users.author', username=lesson.author.username)}}"
-                                class="link">{{lesson.author.username}}</a></span>
-                        <span class="text-muted">On: {{lesson.date_posted.strftime('%Y-%m-%d')}}</span>
-
+                                src="{{ url_for('static', filename='user_pics/' + lesson.author.image_file) }}" alt="">By:
+                            <a href="{{ url_for('users.author', username=lesson.author.username) }}"
+                                class="link">{{ lesson.author.username }}</a></span>
+                        <span class="text-muted">On: {{ lesson.date_posted.strftime('%Y-%m-%d') }}</span>
                     </div>
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
 </section>
 
-
-{% endblock content%}
+{% endblock content %}
