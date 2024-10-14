@@ -13,7 +13,7 @@
 
 # The `PIL.Image.open()` function opens the image for processing. If an `output_size` is provided, the image is resized using the `thumbnail()` method, which ensures the image retains its aspect ratio.
 
-# Finally, the image is saved to the computed path on the server, and the function returns the new file name, which can be stored in the database or used later in the application.
+
 
 
 import secrets
