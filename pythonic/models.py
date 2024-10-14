@@ -24,7 +24,7 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     """Model representing a user in the application."""
     
-   id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
     username = db.Column(db.String(25), unique=True, nullable=False)
@@ -36,14 +36,14 @@ class User(db.Model, UserMixin):
 
 
     def get_reset_token(self):
-         """Generate a password reset token."""
+        """Generate a password reset token."""
         
         s = Serializer(current_app.config["SECRET_KEY"], salt="pw-reset")
         return s.dumps({"user_id": self.id})
 
     @staticmethod
     def verify_reset_token(token, age=3600):
-         """Verify the password reset token."""
+        """Verify the password reset token."""
         
         s = Serializer(current_app.config["SECRET_KEY"], salt="pw-reset")
         try:
@@ -57,8 +57,7 @@ class User(db.Model, UserMixin):
 
 
 class Lesson(db.Model):
-    
-     """Model representing a lesson created by a user."""
+    """Model representing a lesson created by a user."""
     
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
