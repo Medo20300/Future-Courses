@@ -1,3 +1,14 @@
+"""
+This module defines the database models for the application using Flask-SQLAlchemy.
+It includes the following models:
+- User: Represents a user in the application with authentication capabilities.
+- Lesson: Represents a lesson created by a user.
+- Course: Represents a course that contains multiple lessons.
+- Subscriber: Represents a subscriber's email for newsletters or updates.
+
+Each model is defined as a class that inherits from db.Model, and relationships between models are established where necessary.
+"""
+
 from datetime import datetime
 from pythonic import db, login_manager
 from flask_login import UserMixin
@@ -11,6 +22,8 @@ def load_user(user_id):
 
 
 class User(db.Model, UserMixin):
+    """Model representing a user in the application."""
+    
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
@@ -24,11 +37,15 @@ class User(db.Model, UserMixin):
 
 
     def get_reset_token(self):
+         """Generate a password reset token."""
+        
         s = Serializer(current_app.config["SECRET_KEY"], salt="pw-reset")
         return s.dumps({"user_id": self.id})
 
     @staticmethod
     def verify_reset_token(token, age=3600):
+         """Verify the password reset token."""
+        
         s = Serializer(current_app.config["SECRET_KEY"], salt="pw-reset")
         try:
             user_id = s.loads(token, max_age=age)["user_id"]
@@ -41,6 +58,9 @@ class User(db.Model, UserMixin):
 
 
 class Lesson(db.Model):
+    
+     """Model representing a lesson created by a user."""
+    
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -57,6 +77,8 @@ class Lesson(db.Model):
 
 
 class Course(db.Model):
+    """Model representing a course that contains multiple lessons."""
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(150), nullable=False)
@@ -68,6 +90,7 @@ class Course(db.Model):
 
 
 class Subscriber(db.Model):
+    """Model representing a subscriber's email for updates."""
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True, nullable=False)
 
