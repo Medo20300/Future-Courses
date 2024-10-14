@@ -114,5 +114,19 @@ body::before {
 
 
 .btn-username {
-    color: brown;
+    font-size: 24px;      
+    color: #4a90e2;       
+    background-color: #f8f9fa; 
+    padding: 10px 20px;   
+    border-radius: 5px;    
+    border: 2px solid #4a90e2; 
+    font-weight: bold;     
+    text-align: center;    
+}
+
+
+.btn-username:hover {
+    background-color: #4a90e2;
+    color: #fff;
+    cursor: pointer;  
 }
