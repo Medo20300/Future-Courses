@@ -1,4 +1,18 @@
 
+# The Config class defines the configuration settings for the Flask application, including security, database, email, and CKEditor settings.
+
+# The SECRET_KEY is used for session management and security purposes. It is fetched from an environment variable, but a default key is provided for development use.
+
+# The SQLALCHEMY_DATABASE_URI sets up the connection to the MySQL database using SQLAlchemy. It also defaults to a local MySQL database configuration for development if no environment variable is provided.
+# SQLALCHEMY_TRACK_MODIFICATIONS is set to False to disable the modification tracking system, improving resource usage by avoiding unnecessary overhead.
+
+# CKEditor settings are included to enable the use of code snippets in the editor and specify a file upload handler route.
+
+# The MAIL_SERVER, MAIL_PORT, and MAIL_USE_TLS are configured for email functionality using Gmail's SMTP server, with TLS enabled for secure communication.
+# The email credentials (MAIL_USERNAME and MAIL_PASSWORD) are pulled from environment variables to ensure security in production, but default values are provided for development.
+
+# This configuration is designed to be flexible, allowing for easy adjustments between development and production environments by simply setting environment variables.
+
 import os
 class Config:
     # Secret key for session management and security
