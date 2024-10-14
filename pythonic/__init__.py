@@ -28,7 +28,7 @@ login_manager.login_message_category = "info"  # Flash message category for logi
 # Initialize Flask-Mail for email functionality
 mail = Mail()
 
-# Initialize Flask-Admin for administrative views and dashboard
+
 admin = Admin()
 
 # Import models after defining db to avoid circular imports
