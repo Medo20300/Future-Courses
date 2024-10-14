@@ -9,7 +9,7 @@
 # CKEditor settings are included to enable the use of code snippets in the editor and specify a file upload handler route.
 
 # The MAIL_SERVER, MAIL_PORT, and MAIL_USE_TLS are configured for email functionality using Gmail's SMTP server, with TLS enabled for secure communication.
-# The email credentials (MAIL_USERNAME and MAIL_PASSWORD) are pulled from environment variables to ensure security in production, but default values are provided for development.
+
 
 # This configuration is designed to be flexible, allowing for easy adjustments between development and production environments by simply setting environment variables.
 
