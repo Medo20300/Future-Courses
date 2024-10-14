@@ -26,13 +26,19 @@ def create_app(config_calss=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
     from pythonic.adminbp.routes import MyAdminIndexView
-
+    # Initialize the SQLAlchemy database with the Flask app
     db.init_app(app)
+    # Initialize Bcrypt for password hashing with the Flask app
     bcrypt.init_app(app)
+    # Initialize the LoginManager for managing user sessions with the Flask app
     login_manager.init_app(app)
+    # Initialize CKEditor for rich text editing functionality with the Flask app
     ckeditor.init_app(app)
+    # Initialize Flask Modals for handling modal dialogs with the Flask app
     modal.init_app(app)
+    # Initialize Flask-Mail for sending emails with the Flask app
     mail.init_app(app)
+    # Initialize Flask-Admin with the app and set the custom admin index view
     admin.init_app(app, index_view=MyAdminIndexView())
 
     from pythonic.main.routes import main
