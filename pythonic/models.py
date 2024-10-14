@@ -28,6 +28,7 @@ class User(db.Model, UserMixin):
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
     username = db.Column(db.String(25), unique=True, nullable=False)
+    permission = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(125), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default="default.png")
     bio = db.Column(db.Text, nullable=True)
@@ -52,7 +53,7 @@ class User(db.Model, UserMixin):
             return None
         return User.query.get(user_id)
 
-    def __repr__(self):
+    def _repr_(self):
         return f"User('{self.fname}', '{self.lname}', '{self.username}', '{self.email}', '{self.image_file}')"
 
 
@@ -70,7 +71,7 @@ class Lesson(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey("course.id"), nullable=False)
 
-    def __repr__(self):
+    def _repr_(self):
         return f"Lesson('{self.title}', '{self.date_posted}')"
 
 
@@ -83,7 +84,7 @@ class Course(db.Model):
     icon = db.Column(db.String(20), nullable=False, default="default_icon.jpg")
     lessons = db.relationship("Lesson", backref="course_name", lazy=True)
 
-    def __repr__(self):
+    def _repr_(self):
         return f"Course('{self.title}')"
 
 
@@ -92,5 +93,5 @@ class Subscriber(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True, nullable=False)
 
-    def __repr__(self):
+    def _repr_(self):
         return f"Subscriber('{self.email}')"
