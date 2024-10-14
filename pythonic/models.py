@@ -24,11 +24,10 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     """Model representing a user in the application."""
     
-    id = db.Column(db.Integer, primary_key=True)
+   id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(25), nullable=False)
     lname = db.Column(db.String(25), nullable=False)
     username = db.Column(db.String(25), unique=True, nullable=False)
-    permission = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(125), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default="default.png")
     bio = db.Column(db.Text, nullable=True)
