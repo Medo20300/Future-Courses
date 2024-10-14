@@ -5,6 +5,7 @@ from pythonic import admin, db, bcrypt
 from pythonic.models import User, Lesson, Course
 from flask_admin import AdminIndexView
 
+# Create a new Blueprint named 'adminbp' for organizing admin-related routes and views in the application.
 adminbp = Blueprint("adminbp", __name__)
 
 """
