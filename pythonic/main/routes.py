@@ -38,11 +38,16 @@ def upload():
 @main.route("/")
 @main.route("/home")
 def home():
+
+    current_name = None
     # Initialize admin_permission as False by default
     admin_permission = False
 
     # Check if the user is authenticated first
     if current_user.is_authenticated:
+
+        current_name = current_user.fname # show user first name
+
         if current_user.id == 1:
             # Render the admin page if the user is admin (id == 1)
             return render_template("admin.html", title='Admin Page')
@@ -54,7 +59,11 @@ def home():
     lessons = Lesson.query.order_by(Lesson.date_posted.desc()).paginate(page=1, per_page=6)
     courses = Course.query.paginate(page=1, per_page=6)
 
-    return render_template("home.html", lessons=lessons, courses=courses, admin_permission=admin_permission)
+    return render_template("home.html", 
+                           lessons=lessons, 
+                           courses=courses, 
+                           admin_permission=admin_permission,
+                           current_name=current_name)
 
 
 @main.route("/about")
