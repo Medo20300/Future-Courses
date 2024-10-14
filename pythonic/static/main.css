@@ -109,8 +109,3 @@ body::before {
     opacity: 0.3; /* Semi-transparent image */
     z-index: 0; /* Send the image behind the text */
 }
-
-
-
-
-
