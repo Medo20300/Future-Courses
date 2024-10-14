@@ -30,15 +30,20 @@ lessons = Blueprint("lessons", __name__)
 @lessons.route("/dashboard/new_lesson", methods=["GET", "POST"])
 @login_required
 def new_lesson():
-    new_lesson_form = NewLessonForm()
-    new_course_form = NewCourseForm()
+    """Handles creation of new lessons and courses"""
+
+    new_lesson_form = NewLessonForm()  # Form for creating a new lesson
+    new_course_form = NewCourseForm()  # Form for creating a new course
     form = ""
     flag = session.pop("flag", False)
+
+    # Determine which form is submitted
     if "content" in request.form:
         form = "new_lesson_form"
     elif "description" in request.form:
         form = "new_course_form"
 
+    # Handle lesson creation
     if form == "new_lesson_form" and new_lesson_form.validate_on_submit():
         if new_lesson_form.thumbnail.data:
             picture_file = save_picture(
@@ -59,6 +64,7 @@ def new_lesson():
         flash("Your lesson has been created!", "success")
         return redirect(url_for("lessons.new_lesson"))
 
+    # Handle course creation
     elif form == "new_course_form" and new_course_form.validate_on_submit():
         if new_course_form.icon.data:
             picture_file = save_picture(
@@ -75,12 +81,12 @@ def new_lesson():
         session["flag"] = True
         flash("New Course has been created!", "success")
         return redirect(url_for("users.dashboard"))
-    
+
+    # Render the appropriate form/modal
     user_permission = current_user.permission  # 'student' or 'mentor'
     admin_permission = current_user.is_authenticated and current_user.id == 1
-
-
     modal = None if flag else "newCourse"
+
     return render_template_modal(
         "new_lesson.html",
         title="New Lesson",
@@ -95,6 +101,8 @@ def new_lesson():
 
 @lessons.route("/<string:course>/<string:lesson_slug>")
 def lesson(lesson_slug, course):
+    """Displays a lesson based on its slug and course"""
+
     lesson = Lesson.query.filter_by(slug=lesson_slug).first()
     if lesson:
         previous_lesson, next_lesson = get_previous_next_lesson(lesson)
@@ -112,6 +120,8 @@ def lesson(lesson_slug, course):
 @lessons.route("/dashboard/user_lessons", methods=["GET", "POST"])
 @login_required
 def user_lessons():
+    """Displays lessons created by the current user"""
+
     user_permission = current_user.permission  # 'student' or 'mentor'
     admin_permission = current_user.is_authenticated and current_user.id == 1
 
@@ -126,13 +136,15 @@ def user_lessons():
 
 @lessons.route("/<string:course>/<string:lesson_slug>/update", methods=["GET", "POST"])
 def update_lesson(lesson_slug, course):
+    """Handles lesson updates by the author"""
+
     lesson = Lesson.query.filter_by(slug=lesson_slug).first()
     if lesson:
         previous_lesson, next_lesson = get_previous_next_lesson(lesson)
     lesson_id = lesson.id if lesson else None
     lesson = Lesson.query.get_or_404(lesson_id)
     if lesson.author != current_user:
-        abort(403)
+        abort(403) # Only the author can update the lesson
     form = LessonUpdateForm()
     if form.validate_on_submit():
         lesson.course_name = form.course.data
@@ -165,6 +177,8 @@ def update_lesson(lesson_slug, course):
 
 @lessons.route("/lesson/<lesson_id>/delete", methods=["POST"])
 def delete_lesson(lesson_id):
+    """Deletes a lesson by its author"""
+
     lesson = Lesson.query.get_or_404(lesson_id)
     if lesson.author != current_user:
         abort(403)
