@@ -1,9 +1,13 @@
 project-env-1
 medhat1
 medhat
+
 __pycache__
 pythonic/__pycache__
 pythonic/users/__pycache__
+pythonic/adminbp/__pycache__
+pythonic/lessons/__pycache__
+pythonic/main/__pycache__
+
 requirements.txt
 requirements
-
