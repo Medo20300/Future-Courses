@@ -15,7 +15,6 @@ Flask-Migrate==2.5.3
 Flask-Modals==0.5.1
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==0.14.3
-greenlet==1.1.2
 idna==3.10
 importlib-metadata==4.12.0
 importlib_resources==6.4.5
