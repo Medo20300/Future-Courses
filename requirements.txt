@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 aiobotocore @ file:///croot/aiobotocore_1714464387507/work
 aiohttp @ file:///croot/aiohttp_1715108769648/work
 aioitertools @ file:///tmp/build/80754af9/aioitertools_1607109665762/work
@@ -383,3 +384,41 @@ zict @ file:///croot/zict_1695832839030/work
 zipp==3.20.2
 zope.interface @ file:///tmp/build/80754af9/zope.interface_1625035545636/work
 zstandard @ file:///croot/zstandard_1714677652653/work
+=======
+alembic==1.7.7
+bcrypt==4.2.0
+bleach==6.1.0
+blinker==1.4
+click==8.1.7
+dnspython==2.6.1
+email_validator==2.2.0
+Flask==1.1.2
+Flask-Bcrypt==1.0.1
+Flask-CKEditor==1.0.0
+Flask-Login==0.6.3
+Flask-Mail==0.9.1
+Flask-Admin==1.6.1
+Flask-Migrate==2.5.3
+Flask-Modals==0.5.1
+Flask-SQLAlchemy==2.5.1
+Flask-WTF==0.14.3
+idna==3.10
+importlib-metadata==4.12.0
+importlib_resources==6.4.5
+itsdangerous==2.0.1
+Jinja2==3.0.0
+Mako==1.1.5
+MarkupSafe==2.1.5
+Pillow==8.3.2
+PyMySQL==1.1.1
+python-dotenv==0.20.0
+six==1.16.0
+SQLAlchemy==1.4.47
+typing-extensions==3.10.0.0
+webencodings==0.5.1
+Werkzeug==1.0.1
+WTForms==2.3.3
+WTForms-SQLAlchemy==0.3
+zipp==3.20.2
+greenlet==2.0.2
+>>>>>>> origin/main
