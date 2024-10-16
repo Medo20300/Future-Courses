@@ -9,7 +9,7 @@
 To learn more about the project, you can watch the demo video at the following link:
 [Watch the demo video](https://youtu.be/-Z1zFu_Vg-k)
 
-[![Watch the video](https://img.youtube.com/vi/-Z1zFu_Vg-k/maxresdefault.jpg)](https://youtu.be/-Z1zFu_Vg-k)
+https://github.com/user-attachments/assets/f04f5721-1c5f-4f03-9415-d958f1679415
 
 # Key Features
 
