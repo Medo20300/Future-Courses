@@ -27,7 +27,7 @@ https://github.com/user-attachments/assets/f04f5721-1c5f-4f03-9415-d958f1679415
 
 # Project Structure
 
-### Here is a brief overview of the key directories and files in the project:
+## Here is a brief overview of the key directories and files in the project:
 
 * adminbp/: Contains routes and logic for admin-related actions.
 * courses/: Handles routes and forms related to course and lesson management.
