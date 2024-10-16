@@ -1,7 +1,9 @@
+# ignore enviroment to push on github
 project-env-1
 medhat2
+medhat2030
 
-
+# ignore python cache files
 __pycache__
 pythonic/__pycache__
 pythonic/users/__pycache__
@@ -9,5 +11,6 @@ pythonic/adminbp/__pycache__
 pythonic/lessons/__pycache__
 pythonic/main/__pycache__
 
+# ignore requirements file
 requirements.txt
 requirements
