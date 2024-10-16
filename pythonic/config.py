@@ -15,7 +15,7 @@
 
 import os
 class Config:
-    # Secret key for session management and security
+    
     SECRET_KEY = os.environ.get('SECRET_KEY', '6029178fffcca61d16f1bb363270419710da3f535d8353c972c91b4f59909cd7')  # Set a default key for development
 
     # Database configuration using MySQLAlchemy
