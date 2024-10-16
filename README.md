@@ -25,6 +25,8 @@
 To learn more about the project, you can watch the demo video at the following link:
 [Watch the demo video](https://youtu.be/-Z1zFu_Vg-k)
 
+[![Watch the video](https://img.youtube.com/vi/-Z1zFu_Vg-k/maxresdefault.jpg)](https://youtu.be/-Z1zFu_Vg-k)
+
 ### Here is a brief overview of the key directories and files in the project:
 
 * adminbp/: Contains routes and logic for admin-related actions.
