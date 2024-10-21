@@ -18,4 +18,5 @@ def error_403(error):
 # Registers a handler for the 500 error (Internal Server Error).
 @errors.app_errorhandler(500)
 def error_500(error):
+    # Renders a custom '500.html' template and returns the 500 status code.
     return render_template('errors/500.html'), 500
