@@ -3,11 +3,11 @@
 
 # Introduction
 
-## is a fully integrated web application built using the Flask framework, with a MySQL database for backend support. This project offers a range of functionalities, including course management, lesson handling, user authentication (registration and login), and error management. It also integrates tools like CKEditor for rich text editing.
+### is a fully integrated web application built using the Flask framework, with a MySQL database for backend support. This project offers a range of functionalities, including course management, lesson handling, user authentication (registration and login), and error management. It also integrates tools like CKEditor for rich text editing.
 
 -----------------------------------------------------------------------------------------------------------
 
-### You can visit our website on this link -->  [Future Courses](https://futurecourses.pythonanywhere.com/)
+## You can visit our website on this link -->  [Future Courses](https://futurecourses.pythonanywhere.com/)
 
 -----------------------------------------------------------------------------------------------------------
 
