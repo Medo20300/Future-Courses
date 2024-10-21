@@ -83,7 +83,7 @@ python3 create_app.py
 ```
 
 ```python
-python3 run.py
+./run
 ```
 
 6. then Open your web browser and write this host: [http://127.0.0.1:5000](http://127.0.0.1:5000).
