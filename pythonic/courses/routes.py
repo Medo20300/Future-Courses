@@ -1,3 +1,4 @@
+# Importing Blueprint to organize routes, and request to access query parameters in the URL.
 from flask import Blueprint, request
 
 from pythonic.models import Lesson, Course
@@ -5,7 +6,8 @@ from flask import (
     render_template,
 )
 
-
+# Creating a Blueprint named 'courses' to group the related routes. 
+# This helps in structuring the application and making it modular.
 courses_bp = Blueprint("courses", __name__)
 
 
