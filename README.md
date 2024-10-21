@@ -55,8 +55,10 @@ git clone https://github.com/Medo20300/Future-Courses.git
 2. Create and activate a virtual environment:
 
 ```python
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv project_env
+```
+```python
+source project_env/bin/activate
 ```
 
 3. Install the required dependencies file for < Windows >:
