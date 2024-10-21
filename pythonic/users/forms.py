@@ -34,7 +34,7 @@ class RegistrationForm(FlaskForm):
             DataRequired(),
             # Password must meet complexity requirements: 1 lowercase, 1 uppercase, 1 number, 1 special character, 8-32 characters
             Regexp(
-                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#])[A-Za-z\d@$!%*?&_]{8,32}$"
+                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#_])[A-Za-z\d@$!%*?&#_]{8,32}$"
             ),
         ],
     )
@@ -122,7 +122,7 @@ class ResetPasswordForm(FlaskForm):
             DataRequired(),
             # Password requirements: 1 lowercase, 1 uppercase, 1 number, 1 special character, 8-32 characters
             Regexp(
-                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_#])[A-Za-z\d@$!%*?&_]{8,32}$"
+                r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#_])[A-Za-z\d@$!%*?&#_]{8,32}$"
             ),
         ],
     )

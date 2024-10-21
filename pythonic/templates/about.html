@@ -1,10 +1,244 @@
-{% extends "layout.html" %}
-{% block content %}
-    <div class="about-container">
-        <img src="{{ url_for('static', filename='about_page.jpg') }}" alt="About Image" class="about-image">
-        <div class="about-text">
-            <h1>About Us 🌟</h1>
-            <p>Our Courses App is an innovative platform designed to enhance your learning experience by providing access to a wide range of courses across various subjects. 📚 Whether you're a student looking to supplement your education, a professional seeking to upskill, or a lifelong learner pursuing new interests, our app offers a user-friendly interface that makes finding and enrolling in courses easy and efficient. ✨ With features like interactive quizzes, progress tracking, and personalized learning paths, users can engage deeply with course content at their own pace. 🎓 Join a community of learners, connect with experienced instructors, and unlock your potential with our Courses App today! 🚀</p>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/style.css') }}">
+    <script src="{{ url_for('static', filename='dist/js/main.min.js') }}"></script>
+
+    <!-- Bootstrap CSS for Navbar -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>About</title>
+</head>
+<body class="is-boxed has-animations">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top" style="background-color: #182538;">
+    <div class="container">
+        <a href="{{url_for('main.home')}}" class="navbar-brand d-flex align-items-center text-decoration-none">
+            <img src="{{ url_for('static', filename='Logo2.png') }}" alt="Logo" style="height: 60px; width: 70px; margin-right: 10px">
+            <b style="text-decoration: none; font-size: 21px;">Future Courses</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{url_for('main.about')}}" class="nav-link" style="font-size: 17px; text-decoration: none;"><b>About</b></a>
+                </li>
+                {% if admin_permission %}
+                    <li class="nav-item">
+                        {% if request.path == '/home' %}
+                        <a href="#learn" class="nav-link" style="font-size: 17px; text-decoration: none;"><b>Start Learning</b></a>
+                        {% else %}
+                        <a href="{{url_for('courses.courses')}}" class="nav-link" style="font-size: 17px; text-decoration: none;"><b>Start Learning</b></a>
+                        {% endif %}
+                    </li>
+                {% endif %}
+            </ul>
+            <!-- User Links -->
+            <ul class="navbar-nav ms-auto">
+                {% if current_user.is_authenticated %}
+                <div class="dropdown show">
+                    <button class="btn btn-dark dropdown-toggle" style="background-color: #142135; font-size: 17px;" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                       My Account  
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="nav-item">
+                            <a href="{{ url_for('users.dashboard') }}" class="dropdown-item" style="font-size: 17px; text-decoration: none"><b>Dashboard</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('users.logout') }}" class="dropdown-item" style="font-size: 17px; text-decoration: none"><b>Logout</b></a>
+                        </li>
+                    </ul>
+                </div>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{{ url_for('users.register') }}" class="nav-link" style="font-size: 17px; text-decoration: none"><b>Register</b></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('users.login') }}" class="nav-link" style="font-size: 17px; text-decoration: none;"><b>Login</b></a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
     </div>
-{% endblock content %}
+</nav>
+
+<div class="body-wrap boxed-container">
+    <header class="site-header">
+        <div class="container">
+            <div class="site-header-inner">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="brand header-brand">
+                        <a href="#">
+                            <img class="asset-light" src="{{ url_for('static', filename='Logo.png') }}" alt="Logo" style="width: 110px; height: 110px;">
+                            <img class="asset-dark" src="{{ url_for('static', filename='Logo2.png') }}" alt="Logo" style="width: 110px; height: 110px;">
+                        </a>
+                </div>
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <h1 class="hero-title mt-0">Unlock Your Potential with Online Courses</h1>
+                        <p class="hero-paragraph">Join us to explore a wide range of courses that cater to your learning needs. Learn at your own pace and achieve your goals.</p>
+                        <div class="hero-cta">
+                            <a class="button button-primary" href="{{url_for('courses.courses')}}">Start Learning</a>
+                            <a class="button button-primary" href="{{ url_for('users.login') }}">Login Now</a>
+                        </div>
+                        <br>
+                        <div class="lights-toggle">
+                            <input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
+                            <label for="lights-toggle" class="text-xs"><span>Turn to <span class="label-text">dark</span></span></label>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="hero-media">
+                        <div class="header-illustration">
+                            <img class="header-illustration-image asset-light" src="../static/dist/images/header-illustration-light.svg" alt="Header illustration">
+                            <img class="header-illustration-image asset-dark" src="../static/dist/images/header-illustration-dark.svg" alt="Header illustration">
+                        </div>
+                        <div class="hero-media-illustration">
+                            <img class="hero-media-illustration-image asset-light" src="../static/dist/images/hero-media-illustration-light.svg" alt="Hero media illustration">
+                            <img class="hero-media-illustration-image asset-dark" src="../static/dist/images/hero-media-illustration-dark.svg" alt="Hero media illustration">
+                        </div>
+                        <div class="hero-media-container">
+                            <img class="hero-media-image asset-light" src="../static/first_image.png" alt="Hero media" style="width: 500px; height: 260px;">
+                            <img class="hero-media-image asset-dark" src="../static/first_image.png" alt="Hero media" style="width: 500px; height: 260px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features section">
+            <div class="container">
+                <div class="features-inner section-inner has-bottom-divider">
+                    <div class="features-header text-center">
+                        <div class="container-sm">
+                            <h2 class="section-title mt-0">Key Features of Our Courses</h2>
+                            <p class="section-paragraph">Explore a variety of features that make our platform unique and effective for learners of all backgrounds.</p>
+                            <div class="features-image">
+                                <img class="features-illustration asset-dark" src="../static/dist/images/features-illustration-dark.svg" alt="Feature illustration">
+                                <img class="features-box asset-dark" src="../static/photo_2.png" alt="Feature box" style="width: 80%;">
+                                <img class="features-illustration asset-dark" src="../static/dist/images/features-illustration-top-dark.svg" alt="Feature illustration top">
+                                <img class="features-illustration asset-light" src="../static/dist/images/features-illustration-light.svg" alt="Feature illustration">
+                                <img class="features-box asset-light" src="../static/photo_2.png" alt="Feature box" style="width: 80%;">
+                                <img class="features-illustration asset-light" src="../static/dist/images/features-illustration-top-light.svg" alt="Feature illustration top">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="features-wrap">
+                        <div class="feature is-revealing">
+                            <div class="feature-inner">
+                                <div class="feature-icon">
+                                    <img class="asset-light" src="../static/dist/images/feature-01-light.svg" alt="Feature 01">
+                                    <img class="asset-dark" src="../static/dist/images/feature-01-dark.svg" alt="Feature 01">
+                                </div>
+                                <div class="feature-content">
+                                    <h3 class="feature-title mt-0">Diverse Course Selection</h3>
+                                    <p class="text-sm mb-0">Choose from a variety of subjects, including technology, business, arts, and more to suit your interests.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature is-revealing">
+                            <div class="feature-inner">
+                                <div class="feature-icon">
+                                    <img class="asset-light" src="../static/dist/images/feature-02-light.svg" alt="Feature 02">
+                                    <img class="asset-dark" src="../static/dist/images/feature-02-dark.svg" alt="Feature 02">
+                                </div>
+                                <div class="feature-content">
+                                    <h3 class="feature-title mt-0">Expert Instructors</h3>
+                                    <p class="text-sm mb-0">Learn from experienced instructors who are experts in their fields and passionate about teaching.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature is-revealing">
+                            <div class="feature-inner">
+                                <div class="feature-icon">
+                                    <img class="asset-light" src="../static/dist/images/feature-03-light.svg" alt="Feature 03">
+                                    <img class="asset-dark" src="../static/dist/images/feature-03-dark.svg" alt="Feature 03">
+                                </div>
+                                <div class="feature-content">
+                                    <h3 class="feature-title mt-0">Flexible Learning</h3>
+                                    <p class="text-sm mb-0">Access courses anytime, anywhere, and learn at your own pace with our user-friendly platform.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta section">
+            <div class="container-sm">
+                <div class="cta-inner section-inner">
+                    <div class="cta-header text-center">
+                        <h2 class="section-title mt-0">Join Us Today</h2>
+                        <p class="section-paragraph">Sign up now and start your journey toward mastering new skills and achieving your goals.</p>
+                        <div class="cta-cta">
+                            <a class="button button-primary" style="color: #212529;" href="{{ url_for('users.login') }}">Login Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer has-top-divider">
+        <div class="container">
+            <div class="site-footer-inner">
+                <div class="brand footer-brand">
+                    <a href="#">
+                        <img class="asset-light" src="{{ url_for('static', filename='Logo.png') }}" alt="Logo" style="width: 95px; height: 95px;">
+                        <img class="asset-dark" src="{{ url_for('static', filename='Logo2.png') }}" alt="Logo" style="width: 95px; height: 95px;">
+                    </a>
+                </div>
+                
+                <ul class="footer-links list-reset">
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="#">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col text-white text-center position-relative">
+                <a href="#" class="position-absolute bottom-0 end-0">
+                    <i class="bi bi-arrow-up-circle h1" style="color: #535FD7;"></i>
+                </a>
+                <p class="lead font-weight-bold" style="font-size: larger;">Copyright &copy; 2024 | Future Courses</p>
+            </div>
+            <br>
+            <br>
+        </div>
+    </footer>
+</div>
+
+<!-- Bootstrap JS for Navbar -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="{{ url_for('static', filename='dist/js/main.min.js') }}"></script>
+
+</body>
+</html>
