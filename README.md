@@ -8,7 +8,10 @@
 -----------------------------------------------------------------------------------------------------------
 
 
+
 ### You can visit our website on this link: [Future Courses](https://futurecourses.pythonanywhere.com/)
+
+
 
 -----------------------------------------------------------------------------------------------------------
 
@@ -53,6 +56,7 @@ https://github.com/user-attachments/assets/f04f5721-1c5f-4f03-9415-d958f1679415
 git clone https://github.com/Medo20300/Future-Courses.git
 ```
 
+
 2. Create and activate a virtual environment:
 
 ```python
@@ -60,16 +64,24 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Install the required dependencies:
+
+3. Install the required dependencies file for < Windows >:
 
 ```python
 pip install -r requirements.txt
 ```
 
+OR required dependencies file for < Ubuntu >:
+```python
+pip install -r requirements2.txt
+```
+
+
 4. Configure the database:
 
 * Ensure you have MySQL installed.
 * Create the database using the script provided in config.py and update the credentials as needed.
+
 
 5. Run the application:
 
@@ -81,7 +93,9 @@ python3 create_app.py
 python3 run.py
 ```
 
+
 6. then Open your web browser and write this host: [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
 
 ------------------------------------------------------------------------------------------------------
 # Technologies Used
